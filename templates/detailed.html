@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Detailed Pitfall Analysis</title>
+	<style type="text/css">
+		.analysis {
+				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				width: 30%;
+
+			}
+
+			.comparison {
+				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				width: 100%;
+
+			}
+
+			.analysis td, .analysis th {
+				border: 1px solid #ddd;
+				padding: 8px;
+			}
+
+			.analysis tr:nth-child(even){background-color: #f2f2f2;}
+
+			.analysis tr:hover {background-color: #ddd;}
+
+			.comparison th {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: left;
+				background-color: #1074e6;
+				color: white;
+			}
+			a#homelink:hover {
+			    color: blue;
+			}
+	</style>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='demo.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='component.css') }}" />
+</head>
+<body>
+	<h2>Pitfall Analysis for {{name}}</h2>
+	<table class="analysis comparison" align="center">
+		<tr>
+			<th>Code</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Importance</th>
+			<th>Frequency</th>
+		</tr>
+		{% for attrib in attribs %}
+		<tr>
+			{% for elem in attrib %}
+				<td>{{ elem }}</td>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+	</table>
+	<a href="/" id="homelink"><p id="home">GO HOME</p></a>
+</body>
+</html>
+

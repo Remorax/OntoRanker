@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		@font-face {
+			font-weight: normal;
+			font-style: normal;
+			font-family: 'codropsicons';
+			src: url('../fonts/codropsicons/codropsicons.eot');
+			src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+		}
+
+		*,
+		*:after,
+		*:before {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		.clearfix:before,
+		.clearfix:after {
+			display: table;
+			content: '';
+		}
+
+		.clearfix:after {
+			clear: both;
+		}
+		.upload-btn-wrapper {
+		  position: relative;
+		  overflow: hidden;
+		  display: inline-block;
+		}
+
+		.btn {
+		  border: 2px solid gray;
+		  color: white;
+		  background-color: green;
+		  padding: 8px 20px;
+		  border-radius: 8px;
+		  font-size: 15px;
+		  text-transform: uppercase;
+		}
+
+		.upload-btn-wrapper input[type=file] {
+		  font-size: 50px;
+		  position: absolute;
+		  left: 0;
+		  top: 0;
+		  opacity: 0;
+		}
+
+		
+		.inputfile + label {
+		    max-width: 80%;
+		    font-size: 1.25rem;
+		    /* 20px */
+		    font-weight: 700;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+		    cursor: pointer;
+		    display: inline-block;
+		    overflow: hidden;
+		    padding: 0.625rem 1.25rem;
+		    /* 10px 20px */
+
+		}
+		#params-table {
+			width: 100%
+		}
+		#pitfalls-title {
+			text-align: center; 
+			text-decoration: underline;
+			padding-top: 30px;
+		}
+		.no-js .inputfile + label {
+		    display: none;
+		}
+
+		.inputfile:focus + label,
+		.inputfile.has-focus + label {
+		    outline: 1px dotted #000;
+		    outline: -webkit-focus-ring-color auto 5px;
+		}
+
+		.inputfile + label * {
+		    /* pointer-events: none; */
+		    /* in case of FastClick lib use */
+		}
+
+		.inputfile + label svg {
+		    width: 1em;
+		    height: 1em;
+		    vertical-align: middle;
+		    fill: currentColor;
+		    margin-top: -0.25em;
+		    /* 4px */
+		    margin-right: 0.25em;
+		    /* 4px */
+		}
+
+
+		#file-1, #file-2, #file-3, #file-4, #download{
+			width: 0.1px;
+		    height: 0.1px;
+		    opacity: 0;
+		    overflow: hidden;
+		    position: absolute;
+		    z-index: -1;
+		}
+
+		
+		.inputfile-1 + label {
+		    color: #f1e5e6;
+		    background-color: #d3394c;
+		}
+
+		.inputfile-1:focus + label,
+		.inputfile-1.has-focus + label,
+		.inputfile-1 + label:hover {
+		    background-color: #722040;
+		}
+
+
+		
+		.inputfile-2 + label {
+		    color: #f1e5e6;
+		    background-color: #1994e6;
+		}
+
+		.inputfile-2:focus + label,
+		.inputfile-2.has-focus + label,
+		.inputfile-2 + label:hover {
+		    background-color: #193975;
+		}
+		.mode-radio {
+			 text-align: center;
+			 padding-top: 30px;
+		}
+		.mode-label {
+			padding-left: 5px;
+			font-weight: bold;
+		}
+		.pitfall-label {
+			padding-left: 0px;
+			padding-right: 10px;
+			font-weight: bold;
+			text-align: left;
+		}
+		#pitfall-checkbox {
+			text-align: left;
+			padding-left: 10px;
+		}
+		.first-button {
+			padding-top: 70px;
+			padding-bottom: 0px;
+			padding-right: 105px;
+			text-align: right;
+			width: 50%;
+		}
+
+
+		.second-button{
+			padding-top: 0px;
+			padding-right: 80px;
+			text-align: right;
+			width: 50%;
+		}
+
+		.button-text {
+			padding-top: 0px;
+			text-align: left;
+		}
+
+
+		.third-button {
+			padding-top: 70px;
+			padding-bottom: 0px;
+			padding-right: 105px;
+			text-align: right;
+			width: 50%;
+			
+		}
+		#submit, #scan, #train{
+		  background-color: #4CAF50;
+		  border: none;
+		  color: white;
+		  padding: 15px 32px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 16px;
+		  margin: 4px 2px;
+		  cursor: pointer;
+		}
+
+		#buttons_table
+		{
+			width: 100%;
+			margin-top: 50px;
+		}
+
+		#modes_table {
+			width: 100%;
+			margin-top: 50px;	
+			margin-bottom: 50px;
+		}
+
+		#params_table {
+			width: 100%;
+			margin-top: 20px;	
+			margin-bottom: 20px;
+			text-align: center;
+		}
+
+		#caption {
+			text-align: center;
+			padding-top: 50px;
+			font-weight: bold;
+		}
+
+		#upload_buttons {
+			width: 100%;
+		}
+
+		#pitfall-message {
+			padding-bottom: 20px;
+		}
+
+		#train-table {
+			width: 100%;
+			text-align: center;
+		}
+
+		.th-row{
+			font-weight: bold;
+		}
+
+		#train-table {
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 95%;
+			margin: 30px;
+			text-align: center;
+		}
+
+		#train-table td, #train-table th {
+			border: 1px solid #ddd;
+			padding: 15px;
+		}
+
+		#train-table tr:nth-child(even){background-color: #f2f2f2;}
+
+		#train-table tr:hover {background-color: #ddd;}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='demo.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='component.css') }}" />
+</head>
+<body>
+
+	<title>OntoEvaluator</title>
+	<h1 style="text-align: center; padding-top: 50px;">OntoEvaluator </h1>
+	<h1 style="text-align: center; padding-top: 10px;">An Ontology Quality Scoring and Ranking tool</h1>
+	<table id="buttons_table" >
+			<tr>
+				<td class="mode-radio">
+					<input id='upload' name='mode' type='radio' value="upload" checked />
+					<span class="mode-label">Upload Model</span>
+				</td>
+				<td class="mode-radio">
+	    			<input id='train' name='mode' type='radio' value="train"/>
+	    			<span class="mode-label"> Train Model</span>
+	    		</td>
+	    	</tr>
+	</table>
+	<form method="post" action="/" enctype="multipart/form-data">
+		
+	    <div id="upload_buttons">
+			<div id="caption">Sample <a href="https://github.com/Remorax/OntoEvaluator/blob/master/OntoEvaluatorApp/ontoranker.sav">trained model</a> and <a href="https://github.com/Remorax/OntoEvaluator/tree/master/ontologies/test">test ontologies</a> are available for the information security domain</div>
+	    	<table style="width: 100%">
+				<tr>
+					<td class="first-button">
+						<input type="file" name="model" id="file-1" class="inputfile inputfile-1" autocomplete="off" required/>
+						<label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Upload model</span></label>
+						<br/><br/><br/><br/>
+					</td>
+					<td class="first-button button-text">
+						Upload trained SVR model. If not available, choose "Train Model" option
+					</td>
+				</tr>
+				<tr>
+					<td class="second-button">
+						<input type="file" name="files[]" id="file-2" class="inputfile inputfile-1" data-multiple-caption="{count} ontologies selected" multiple autocomplete="off" required/>
+						<label for="file-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Upload ontologies</span></label>
+					</td>
+					<td class="second-button button-text">
+						Upload ontologies to be ranked
+					</td>
+				</tr>
+			</table>
+	    </div>
+			
+		<p  id="submit_para" style="text-align: center; padding-top: 50px;">
+			<input type="submit" id="submit" value="Rank">
+		</p>
+	</form>
+	<table id="create_buttons" style="width: 100%; display: none;">
+			<tr>
+				<td class="first-button">
+					<input type="file" name="model" id="file-3" class="inputfile inputfile-1" autocomplete="off" data-multiple-caption="{count} ontologies selected" multiple required/>
+					<label for="file-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> 
+						<span>Upload training ontologies</span></label>
+					<br/><br/><br/><br/>
+				</td>
+				<td class="first-button button-text">
+					Upload ontologies to train the SVR model. One good way to create such ontologies is to start with a base ontology and introduce one/more violations from the <a href="http://oops.linkeddata.es/catalogue.jsp">catalogue</a>
+				</td>
+			</tr>
+			<tr id="pitfall-row" style="display: none">
+				<td class="second-button" id="pitfall-checkbox">
+					
+				</td>
+				<td class="second-button button-text" id="pitfall-message">
+					Select the pitfalls you would like to evaluate your ontologies on. (Check the <a href="http://oops.linkeddata.es/catalogue.jsp">pitfall catalogue</a> for a description of each pitfall.)
+				</td>
+			</tr>
+		</table>
+		<p id="evaluate_oops" style="text-align: center; padding-top: 50px; display: none">
+			<input type="button" id="scan" value="Pitfall Scan">
+		</p>
+		
+		<div id="error-scan" style="display: none; text-align: center; font-weight: bold">
+			ERROR: No pitfalls detected in any of the ontologies. Please choose a larger set of pitfalls or ontologies.
+		</div>
+
+		<div id="pitfall-table" style="display: none">
+			
+		</div>
+			
+	    
+
+		<table id="final_create_buttons" style="width: 100%; display: none;">
+			<tr>
+				<td class="third-button">
+					<a href="/save" target="blank"><input type="button" name="download_model" id="download" class="inputfile inputfile-2"/>
+					<label style="border-color: #1994e6;" for="download"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 469.333 469.333" style="enable-background:new 0 0 469.333 469.333;" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<path d="M469.271,264.512c-0.336-3.51-1.64-6.885-3.791-9.991l-95.975-138.667c-3.978-5.75-10.539-9.188-17.537-9.188h-63.983
+				c-5.894,0-10.664,4.771-10.664,10.667v21.333c0,5.896,4.77,10.667,10.664,10.667h52.799L414.617,256h-51.984
+				c-23.515,0-42.655,19.135-42.655,42.667c0,11.76-9.56,21.333-21.328,21.333H170.684c-11.768,0-21.328-9.573-21.328-21.333
+				c0-23.531-19.141-42.667-42.655-42.667H54.717l73.832-106.667h52.799c5.894,0,10.664-4.771,10.664-10.667v-21.333
+				c0-5.896-4.77-10.667-10.664-10.667h-63.983c-6.998,0-13.559,3.438-17.537,9.188L3.853,254.521
+				c-2.151,3.105-3.455,6.672-3.791,10.182c-0.139,0.688,0,161.964,0,161.964c0,23.531,19.141,42.667,42.655,42.667h383.899
+				c23.515,0,42.655-19.135,42.655-42.667C469.271,426.667,469.411,265.199,469.271,264.512z"/>
+			<path d="M163.143,180.042l-15.077,15.082c-4.166,4.165-4.166,10.919,0,15.085l71.521,71.542c4.166,4.167,9.622,6.25,15.079,6.25
+				s10.914-2.083,15.079-6.25l71.521-71.542c4.166-4.165,4.166-10.919,0-15.085l-15.077-15.082c-4.166-4.165-10.916-4.165-15.082,0
+				l-35.114,35.125v-204.5C255.994,4.775,251.22,0,245.331,0h-21.328c-5.889,0-10.664,4.775-10.664,10.667v204.5l-35.114-35.125
+				C174.059,175.876,167.308,175.876,163.143,180.042z"/>
+		</g>
+	</g>
+</g></svg> 
+						<span>Download</span></label></a>
+					
+				</td>
+				<td class="third-button button-text">
+					Download model. You can now evaluate ontologies by clicking the "Upload model" option and uploading this model
+				</td>
+			</tr>
+		</table>
+		<br/><br/><br/><br/><br/><br/><br/><br/>
+	<script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
+
+

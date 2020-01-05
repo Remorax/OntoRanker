@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ontology Analysis</title>
+		<style type="text/css">
+			/* unvisited link */
+			a:link {
+			    text-decoration:none;
+			    color: black;
+			}
+
+			/* visited link */
+			a:visited {
+			    text-decoration:none;
+			    color: black;
+			}
+
+			/* mouse over link */
+			a:hover {
+			    color: green;
+			}
+
+			/* selected link */
+			a:active {
+			    text-decoration:none;
+			    color: black;
+			}
+			.analysis {
+				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				width: 60%;
+			}
+
+			.analysis td, .analysis th {
+				border: 1px solid #ddd;
+				padding: 15px;
+			}
+
+			.analysis tr:nth-child(even){background-color: #f2f2f2;}
+
+			.analysis tr:hover {background-color: #ddd;}
+
+			#ranks th {
+				padding-top: 20px;
+				padding-bottom: 20px;
+				text-align: left;
+				background-color: #4CAF50;
+				color: white;
+			}
+
+			#home {
+				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				text-align:center;
+				font-size: 20px;
+			}
+			/* mouse over link */
+			a#homelink:hover {
+			    color: blue;
+			}
+			
+		</style>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='demo.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='component.css') }}" />
+	</head>
+	<body>
+		<h1 style="text-align: center; padding-top: 80px;">Here is the list of ranked ontologies</h1>
+		<div style="width: 2000px; height: 350px; display: table-cell; vertical-align: middle;" align="center">
+			<table class="analysis" id="ranks" style="padding-left: 20px; width: 700px; border: 10px ">
+				<tr>
+					<th style="text-align: center;">Rank</th>
+					<th style="text-align: center;">Ontology</th>
+					<th style="text-align: center;">Pitfall score</th>
+				</tr>
+				{% for rank in ranks %}
+				<tr>
+					<td style="text-align: center;"><a href="{{'detailed/' + loop.index|string}}">{{ rank[0] }}</a></td>
+					<td style="text-align: center;"><a href="{{'detailed/' + loop.index|string}}">{{ rank[1][0] }}</a></td>	
+					<td style="text-align: center;"><a href="{{'detailed/' + loop.index|string}}">{{ rank[1][1] }}</a></td>	
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+		<a href="/" id="homelink"><p id="home">GO HOME</p></a>
+	</body>
+</html>
