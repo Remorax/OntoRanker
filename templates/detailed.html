@@ -13,8 +13,8 @@
 			.comparison {
 				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 				border-collapse: collapse;
-				width: 100%;
-
+				width: 90%;
+				padding-top: 30px
 			}
 
 			.analysis td, .analysis th {
@@ -32,17 +32,31 @@
 				text-align: left;
 				background-color: #1074e6;
 				color: white;
+    			
 			}
+
+			#home {
+				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				text-align:center;
+				font-size: 20px;
+				padding-top: 50px;
+			}
+
 			a#homelink:hover {
 			    color: blue;
 			}
+			#topic {
+			    text-align: center;
+			 	padding: 30px 0px 20px 20px;
+			}
+
 	</style>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}" />
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='demo.css') }}" />
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='component.css') }}" />
 </head>
 <body>
-	<h2>Pitfall Analysis for {{name}}</h2>
+	<h2 id="topic">Pitfall Analysis for {{name}}</h2>
 	<table class="analysis comparison" align="center">
 		<tr>
 			<th>Code</th>
@@ -59,7 +73,8 @@
 		</tr>
 		{% endfor %}
 	</table>
-	<a href="/" id="homelink"><p id="home">GO HOME</p></a>
+	<a href="/analysis" id="homelink"><p id="home">BACK TO RESULTS</p></a>
+	<br/><br/><br/><br/>
 </body>
 </html>
 
