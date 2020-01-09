@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Server Error</title>
+		<style type="text/css">
+			/* unvisited link */
+			a:link {
+			    text-decoration:none;
+			    color: black;
+			}
+
+			/* visited link */
+			a:visited {
+			    text-decoration:none;
+			    color: black;
+			}
+
+			/* mouse over link */
+			a:hover {
+			    color: green;
+			}
+
+			/* selected link */
+			a:active {
+			    text-decoration:none;
+			    color: black;
+			}
+
+			#home {
+				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				text-align:center;
+				font-size: 20px;
+			}
+			/* mouse over link */
+			a.link:hover {
+			    color: blue;
+			}
+			
+		</style>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='demo.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='component.css') }}" />
+	</head>
+	<body>
+		<p id="home">OOPS! We seem to have run into a server error. Try <a href="https://www.getfilecloud.com/blog/2015/03/tech-tip-how-to-do-hard-refresh-in-browsers/#.XhaqqVMzbBI" class="link">hard refreshing</a> the page or click <a href="/" class="link">here</a>to go home. If neither of these work, report an issue at the <a href="/" class="link">issue tracker</a>! </p>
+	</body>
+</html>
